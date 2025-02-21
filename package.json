@@ -37,7 +37,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-vue": "^9.32.0",
-    "launchdarkly-js-client-sdk": "^3.5.0",
+    "launchdarkly-js-client-sdk": "^2.23.0",
     "prettier": "^3.5.1",
     "sinon": "^19.0.2",
     "vitest": "^3.0.6",
