@@ -1,6 +1,6 @@
 import sinon from 'sinon';
 import { cloneDeep } from 'lodash';
-import { isVue3, h, markRaw } from 'vue-demi';
+import { h, markRaw } from 'vue';
 import RouterGuard from '@/components/LDRouteGuard';
 import ldRedirect from '@/mixins/ldRedirect';
 import VueLd from '@/plugin';
@@ -14,11 +14,8 @@ const EmptyComponent = markRaw({
   props: {
     title: { type: String, required: false, default: 'title' },
   },
-  render(createElement) {
-    if (isVue3) {
-      return h('div', this.title);
-    }
-    return createElement('div', this.title);
+  render() {
+    return h('div', this.title);
   },
 });
 

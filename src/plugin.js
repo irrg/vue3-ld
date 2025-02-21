@@ -1,5 +1,5 @@
 import * as LDClient from 'launchdarkly-js-client-sdk';
-import { isVue2, reactive } from 'vue-demi';
+import { reactive } from 'vue';
 import { formatFlags, rethrow } from './utils';
 
 export const initialize = ({ clientSideId, user, ldOptions, readyBeforeIdentify }) => {
@@ -73,12 +73,7 @@ export default {
       $ld = initialize({ clientSideId, user, ldOptions, readyBeforeIdentify });
     }
 
-    if (isVue2) {
-      // eslint-disable-next-line no-param-reassign
-      vue.prototype.$ld = $ld;
-    } else {
-      // eslint-disable-next-line no-param-reassign
-      vue.config.globalProperties.$ld = $ld;
-    }
+    // eslint-disable-next-line no-param-reassign
+    vue.config.globalProperties.$ld = $ld;
   },
 };

@@ -5,7 +5,7 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/d87da39dfb63340702bd/test_coverage)](https://codeclimate.com/github/dashhudson/vue-ld/test_coverage) [![npm version](https://img.shields.io/npm/v/vue-ld?color=%23d6b034)](https://www.npmjs.com/package/vue-ld) [![Last Commit](https://img.shields.io/github/last-commit/dashhudson/vue-ld?color=%23d6b034)](https://github.com/dashhudson/vue-ld/graphs/commit-activity)
 [![Licence](https://img.shields.io/github/license/dashhudson/vue-ld?color=%23d6b034)](https://github.com/dashhudson/vue-ld/blob/dev/LICENSE.txt) [![Stars](https://img.shields.io/github/stars/dashhudson/vue-ld?color=%23d6b034&logoColor=%23d6b034)](https://github.com/dashhudson/vue-ld)
 
-A simple wrapper around the [js-client-sdk](https://github.com/launchdarkly/js-client-sdk) that provides observable feature flags, a ready state to ensure all feature flags are up to date, and routing utilities. Compatabile with both Vue 2 and Vue 3 via [vue-demi](https://github.com/vueuse/vue-demi).
+A simple wrapper around the [js-client-sdk](https://github.com/launchdarkly/js-client-sdk) that provides observable feature flags, a ready state to ensure all feature flags are up to date, and routing utilities. Compatabible with Vue 3.
 
 ## Usage
 

@@ -3,11 +3,11 @@ import babel from '@rollup/plugin-babel';
 import VuePlugin from 'rollup-plugin-vue';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 
-const name = 'vue-ld';
+const name = 'vue3-ld';
 
 export default {
   input: 'src/index.js',
-  external: ['launchdarkly-js-client-sdk', 'lodash', 'vue-demi'],
+  external: ['launchdarkly-js-client-sdk', 'lodash'],
   output: [
     {
       name,
@@ -34,7 +34,7 @@ export default {
           '@vue/cli-plugin-babel/preset',
           {
             debug: true,
-            targets: { browsers: ['> 1%', 'last 2 versions', 'ie > 9'] },
+            targets: { browsers: ['> 1%', 'last 2 versions'] },
             modules: false,
           },
         ],

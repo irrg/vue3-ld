@@ -1,6 +1,4 @@
-const { isVue3 } = require('vue-demi');
-
-const vueVersion = isVue3 ? '3' : '2';
+const vueVersion = 3;
 
 let vueJest = null
 try {
