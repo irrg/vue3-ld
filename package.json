@@ -9,8 +9,8 @@
     "build": "vite build",
     "watch": "vite build --watch",
     "build:prod": "vite build",
-    "lint": "vue-cli-service lint --max-warnings 0",
-    "lint:ci": "npm run lint -- --no-fix",
+    "lint": "eslint --max-warnings 0",
+    "lint:ci": "eslint -- --no-fix",
     "test:unit": "vitest"
   },
   "repository": {
