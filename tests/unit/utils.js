@@ -1,16 +1,20 @@
+import { createApp } from 'vue';
+import { mount as vue3Mount } from '@vue/test-utils';
 
-export const mount = async (component, { plugins, mixins, mocks, props }) => {
-  const { mount: vue3Mount } = await import('@vue/test-utils');
-  const wrapper = vue3Mount(component, {
-    global: { plugins, mixins, mocks },
+export const mount = async (component, { plugins = [], mixins = [], mocks = {}, props = {} } = {}) => {
+  const app = createApp({}); // Ensures Vue is initialized
+  return vue3Mount(component, {
+    global: {
+      plugins: [...plugins, app],
+      mixins,
+      mocks,
+      provide: app.config.globalProperties,
+    },
     props,
   });
-
-  return wrapper;
 };
 
-export const ldClientReady = (wrapper) => new Promise((r) => {
-    wrapper.vm.$ld.ldClient.on('ready', () => {
-      r();
-    });
+export const ldClientReady = (wrapper) =>
+  new Promise((resolve) => {
+    wrapper.vm.$ld.ldClient.on('ready', resolve);
   });

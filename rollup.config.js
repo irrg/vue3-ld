@@ -1,6 +1,6 @@
 import commonJs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
-import VuePlugin from 'rollup-plugin-vue';
+import vue from '@vitejs/plugin-vue';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 
 const name = 'vue3-ld';
@@ -26,15 +26,15 @@ export default {
     commonJs({
       include: 'node_modules/**',
     }),
-    VuePlugin(),
+    vue(),
     babel({
       babelrc: false,
       presets: [
         [
-          '@vue/cli-plugin-babel/preset',
+          '@babel/preset-env',
           {
             debug: true,
-            targets: { browsers: ['> 1%', 'last 2 versions'] },
+            targets: '> 1%, last 2 versions, not dead',
             modules: false,
           },
         ],
