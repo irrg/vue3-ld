@@ -1,8 +1,12 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import sinon from 'sinon';
 import { cloneDeep } from 'lodash';
 import ldRedirect from '@/mixins/ldRedirect';
 import VueLd from '@/plugin';
-import { mount, ldClientReady } from './utils';
+import { mountComponent, ldClientReady } from './utils';
 import { defaultVueLdOptions, flagsResponse } from './dummy';
 
 const Component = {
@@ -20,9 +24,9 @@ describe('ldRedirectMixin', () => {
   const createComponent = async (mixins) => {
     const VueLdPlugin = [VueLd, defaultVueLdOptions];
     mocks = {
-      $router: { push: jest.fn() },
+      $router: { push: vi.fn() },
     };
-    const wrapper = await mount(Component, {
+    const wrapper = await mountComponent(Component, {
       plugins: [VueLdPlugin],
       mixins,
       mocks,

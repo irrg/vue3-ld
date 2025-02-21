@@ -4,7 +4,7 @@ import { h, markRaw } from 'vue';
 import RouterGuard from '@/components/LDRouteGuard';
 import ldRedirect from '@/mixins/ldRedirect';
 import VueLd from '@/plugin';
-import { mount, ldClientReady } from './utils';
+import { mountComponent, ldClientReady } from './utils';
 import { defaultVueLdOptions, flagsResponse } from './dummy';
 
 const mixins = [ldRedirect('myFlag', '/')];
@@ -14,7 +14,7 @@ const EmptyComponent = markRaw({
   props: {
     title: { type: String, required: false, default: 'title' },
   },
-  render() {
+  render(d) {
     return h('div', this.title);
   },
 });
@@ -26,9 +26,9 @@ describe('LDRouteGuard', () => {
   const createComponent = async (component, componentProps = {}, invertFlag = false) => {
     const VueLdPlugin = [VueLd, defaultVueLdOptions];
     mocks = {
-      $router: { push: jest.fn() },
+      $router: { push: vi.fn() },
     };
-    const wrapper = await mount(RouterGuard, {
+    const wrapper = await mountComponent(RouterGuard, {
       plugins: [VueLdPlugin],
       mixins,
       mocks,

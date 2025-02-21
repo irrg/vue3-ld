@@ -1,16 +1,16 @@
 import sinon from 'sinon';
 import VueLd from '@/plugin';
 import { rethrow } from '@/utils';
-import { mount, ldClientReady } from './utils';
+import { mountComponent, ldClientReady } from './utils';
 import { defaultVueLdOptions, flagsResponse } from './dummy';
 
 const Component = {
   template: '<div></div>',
 };
 
-jest.mock('@/utils', () => ({
-    ...jest.requireActual('@/utils'),
-    rethrow: jest.fn(),
+vi.mock('@/utils', () => ({
+    ...vi.importActual('@/utils'),
+    rethrow: vi.fn(),
   }));
 
 describe('VueLd Plugin', () => {
@@ -26,13 +26,13 @@ describe('VueLd Plugin', () => {
         ...vueLdOptions,
       },
     ];
-    return mount(Component, { plugins: [VueLdPlugin] });
+    return mountComponent(Component, { plugins: [VueLdPlugin] });
   };
 
   beforeEach(() => {
     server = sinon.createFakeServer();
-    warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
-    errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
   });
 
   afterEach(() => {
@@ -82,7 +82,7 @@ describe('VueLd Plugin', () => {
 
     it('calls vueLdCallback after ready with correct context', async () => {
       const wrapper = await createComponent({ readyBeforeIdentify: false });
-      const vueLdCallback = jest.fn();
+      const vueLdCallback = vi.fn();
       await ldClientReady(wrapper);
       await wrapper.vm.$ld.identify(
         {
